@@ -1,0 +1,4 @@
+db.admin.insert({
+	username:'admin',
+	password: '123'
+});

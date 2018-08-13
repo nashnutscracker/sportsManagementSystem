@@ -1,0 +1,97 @@
+<div class="mainDiv">
+  <h2>Admin Operations</h2>
+  <button class="btn logOut" (click)="logOut()">Log Out</button>
+  <br>
+  <button (click)="show=!show" class="btn btn-primary">{{show ? 'Hide Operations' : 'Display Operations'}}</button>
+
+  <div *ngIf="show">
+    <br>
+    <h3>
+      <label style="margin-right: 5px; cursor: pointer;">
+        <input #addEvents type="radio" name="size" (change)="0" class="radioClass">Add Events</label>
+      <label style="margin-left: 5px; cursor: pointer;">
+        <input #addStudents type="radio" name="size" (change)="0" class="radioClass">Add Students</label>
+      <label style="margin-left: 5px; cursor: pointer;">
+        <input #addTeachers type="radio" name="size" (change)="0" class="radioClass">Add Teachers</label>
+    </h3>
+
+    <div *ngIf="addEvents.checked">
+      <div class="container">
+        <div class="account-wall">
+          <h2 class="formHeader">Add an Event</h2>
+          <form class="form-signin" [formGroup]="form1">
+            <input type="text" class="form-control" placeholder="Event Name" autocomplete="off" formControlName="eventName" #eventName
+              required autofocus>
+            <br>
+            <input type="number" class="form-control" placeholder="Event ID" autocomplete="off" formControlName="eventNumber" #eventNumber
+              required>
+            <br>
+            <input type="number" class="form-control" placeholder="Max. Number of Students" autocomplete="off" formControlName="numberOfStudents"
+              #numberOfStudents required>
+            <br>
+            <input type="text" class="form-control" placeholder="Indoor / Outdoor" autocomplete="off" formControlName="inOut" #inOut
+              required>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form1.valid" (click)="addEvent(eventName.value, eventNumber.value, numberOfStudents.value, inOut.value)">
+              Add This Event</button>
+            <span class="clearfix"></span>
+          </form>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div *ngIf="addStudents.checked">
+      <div class="container">
+        <div class="account-wall">
+          <h2 class="formHeader">Add a Student</h2>
+          <form class="form-signin" [formGroup]="form2">
+            <input type="text" class="form-control" placeholder="Student Name" autocomplete="off" formControlName="studentName" #studentName
+              required autofocus>
+            <br>
+            <input type="number" class="form-control" placeholder="Student ID" autocomplete="off" formControlName="studentNumber" #studentNumber
+              required>
+            <br>
+            <input type="number" class="form-control" placeholder="Class of The Student" autocomplete="off" formControlName="studentClass"
+              #studentClass required>
+            <br>
+            <input type="text" class="form-control" placeholder="Division of The Student" autocomplete="off" formControlName="studentDiv"
+              #studentDiv required>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form2.valid" (click)="addStudent(studentName.value, studentNumber.value, studentClass.value, studentDiv.value)">
+              Add This Student</button>
+            <span class="clearfix"></span>
+          </form>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div *ngIf="addTeachers.checked">
+      <div class="container">
+        <div class="account-wall">
+          <h2 class="formHeader">Add a Teacher</h2>
+          <form class="form-signin" [formGroup]="form3">
+            <input type="text" class="form-control" placeholder="Teacher Name" autocomplete="off" formControlName="teacherName" #teacherName
+              required autofocus>
+            <br>
+            <input type="number" class="form-control" placeholder="Teacher ID" autocomplete="off" formControlName="teacherNumber" #teacherNumber
+              required>
+            <br>
+            <input type="text" class="form-control" placeholder="Set Teacher Username" autocomplete="off" formControlName="teacherUsername"
+              #teacherUsername required>
+            <br>
+            <input type="password" class="form-control" placeholder="Set Teacher Password" autocomplete="off" formControlName="teacherPassword"
+              #teacherPassword required>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form3.valid" (click)="addTeacher(teacherName.value, teacherNumber.value, teacherUsername.value, teacherPassword.value)">
+              Add This Teacher</button>
+            <span class="clearfix"></span>
+          </form>
+        </div>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>

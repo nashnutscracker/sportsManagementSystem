@@ -1,0 +1,52 @@
+<div class="mainDiv">
+  <h2>Teacher Operations</h2>
+  <button class="btn logOut" (click)="logOut()">Log Out</button>
+  <br>
+  <button (click)="show=!show" class="btn btn-primary">{{show ? 'Hide Operations' : 'Display Operations'}}</button>
+
+  <div *ngIf="show">
+    <br>
+    <h3>
+      <label style="margin-right: 5px; cursor: pointer;">
+        <input #viewStudents type="radio" name="size" (change)="0" class="radioClass">View Students</label>
+      <label style="margin-left: 5px; cursor: pointer;">
+        <input #viewResults type="radio" name="size" (change)="0" class="radioClass">View Results</label>
+    </h3>
+
+    <div *ngIf="viewStudents.checked">
+      <div class="container">
+        <div align="center" class="table-responsive">
+          <br>
+          <br>
+          <table class="table table-bordered" style="width: 1000px;">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Student ID</th>
+                <th>Student Class</th>
+                <th>Student Division</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item123 of studentData; let i = index">
+                <td>{{item123.studentName | titlecase}}</td>
+                <td>{{item123.studentNumber | titlecase}}</td>
+                <td>{{item123.studentClass | titlecase}}</td>
+                <td>{{item123.studentDiv | titlecase}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div *ngIf="viewResults.checked">
+      <div class="container">
+        <p>viewResults</p>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>

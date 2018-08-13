@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="account-wall">
+    <h2>Admin Log In</h2>
+    <br>
+    <form class="form-signin" [formGroup]="form">
+      <input type="text" class="form-control" placeholder="Username" autocomplete="off" formControlName="username" #username required
+        autofocus>
+      <input type="password" class="form-control" placeholder="Password" autocomplete="off" formControlName="password" #password
+        required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form.valid" (click)="login1(username.value, password.value)">
+        Log In</button>
+        <span class="clearfix"></span>
+    </form>
+  </div>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
